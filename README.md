@@ -1,2 +1,2 @@
 # Project1
-Home Automation using IOT
+IOT Based Home Automation
