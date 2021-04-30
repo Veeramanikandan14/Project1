@@ -1,5 +1,4 @@
 
-
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -40,7 +39,7 @@ public class DeviceServlet extends HttpServlet {
     	try{  
     		Class.forName("com.mysql.jdbc.Driver");  
     		Connection con=DriverManager.getConnection(  
-    				"jdbc:mysql://localhost:3306/project","sridhar","sumathi2506");   
+    				"jdbc:mysql://localhost:3306/project","vkp05","password");   
     		Statement stmt=con.createStatement();  
     		ResultSet rs=stmt.executeQuery("select * from devices");
     		while(rs.next())
@@ -75,7 +74,7 @@ public class DeviceServlet extends HttpServlet {
 		try{  
     		Class.forName("com.mysql.jdbc.Driver");  
     		Connection con=DriverManager.getConnection(  
-    				"jdbc:mysql://localhost:3306/project","sridhar","sumathi2506");   
+    				"jdbc:mysql://localhost:3306/project","vkp05","password");   
     		Statement stmt=con.createStatement(); 
     		ResultSet rs=stmt.executeQuery("select * from devices where Device_name = '"+device_name+"'");
     		Integer device_id = null;
@@ -84,21 +83,18 @@ public class DeviceServlet extends HttpServlet {
     			device_id = rs.getInt(1);
     			break;
     		}
-    		  String query = "update devices set status = ? where id = ?";
+    		String query = "update devices set status = ? where id = ?";
     	      PreparedStatement preparedStmt = con.prepareStatement(query);
     	      preparedStmt.setBoolean  (1, ap);
     	      preparedStmt.setInt(2, device_id);
-    	      
     	      preparedStmt.executeUpdate();
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
 	
 	}
-
 	private boolean strcmp(String status, String string) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }
